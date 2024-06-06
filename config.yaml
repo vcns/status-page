@@ -2,7 +2,7 @@ settings:
   title: 'Status Page'
   url: 'https://status-page.eidam.dev' # used for Slack messages
   logo: logo.png # image in ./public/ folder
-  daysInHistogram: 90 # number of days you want to display in histogram
+  daysInHistogram: 30 # number of days you want to display in histogram
   collectResponseTimes: true # collects avg response times from CRON locations
 
   allmonitorsOperational: 'All Systems Operational'
@@ -15,19 +15,20 @@ settings:
   dayInHistogramNotOperational: ' incident(s)' # xx incident(s) recorded
 
 monitors:
-  - id: www.vcns.tech # unique identifier
-    name: www.vcns.tech
+  - id: vcns.tech # unique identifier
+    name: vcns.tech
     description: 'www' # default=empty
-    url: 'https://www.vcns.tech/' # URL to fetch
+    url: 'https://vcns.tech/' # URL to fetch
     method: GET # default=GET
     expectStatus: 200 # operational status, default=200
     followRedirect: false # should fetch follow redirects, default=false
     linkable: false # allows the title to be a link, default=true
 
-  - id: vcns.tech # unique identifier
-    name: www.vcns.tech
+  - id: shop.vcns.tech # unique identifier
+    name: shop.vcns.tech
     description: 'base' # default=empty
-    url: 'https://vcns.tech/' # URL to fetch
+    url: 'https://shop.vcns.tech/' # URL to fetch
     method: GET # default=GET
     expectStatus: 200 # operational status, default=200
-    followRedirect: false # should fetch follow redirects, default=true
+    followRedirect: true # should fetch follow redirects, default=true
+    linkable: false # allows the title to be a link, default=true
