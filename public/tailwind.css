@@ -4,21 +4,21 @@
 
 @layer base {
   body {
-    @apply bg-[#F5F7FA] text-[#2E3A59] dark:bg-[#1A1F2B] dark:text-white font-sans;
+    @apply bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-white font-sans;
   }
 
   a {
-    @apply text-[#00B8D9] hover:underline dark:text-[#00B8D9];
+    @apply text-blue-600 hover:underline dark:text-blue-400;
   }
 }
 
 @layer components {
   .card {
-    @apply p-4 bg-white border border-gray-200 dark:bg-[#2E3A59] dark:border-gray-600 shadow rounded-lg mb-2;
+    @apply p-4 bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700 shadow rounded-lg mb-4;
   }
 
   .pill {
-    @apply px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#00B8D9] text-white;
+    @apply px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100;
   }
 
   .histogram {
@@ -31,7 +31,7 @@
     height: 100%;
     width: 100%;
     padding: 1px;
-    border-radius: 3.75px;
+    border-radius: 6px;
   }
 
   .bar {
@@ -39,7 +39,7 @@
     padding-bottom: 1px;
     height: 100%;
     width: 85%;
-    border-radius: 100px;
+    border-radius: 9999px;
   }
 
   .bar.green {
@@ -59,7 +59,7 @@
   }
 
   .tooltip .content {
-    @apply invisible absolute z-50 inline-block rounded-lg py-1 px-2 bg-white dark:bg-[#2E3A59] shadow text-sm text-[#2E3A59] dark:text-white opacity-0 transition-all duration-200 scale-50;
+    @apply invisible absolute z-50 inline-block rounded-lg py-2 px-3 bg-gray-100 dark:bg-gray-800 shadow-lg text-sm text-gray-800 dark:text-gray-100 opacity-0 transition-all duration-200 scale-95;
   }
 
   .tooltip:hover .content {
@@ -67,6 +67,6 @@
   }
 
   .btn-primary {
-    @apply bg-[#00B8D9] hover:bg-[#0099B0] text-white font-semibold py-2 px-4 rounded-lg shadow;
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow;
   }
 }
