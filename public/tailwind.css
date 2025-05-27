@@ -4,26 +4,27 @@
 
 @layer base {
   body {
-    @apply bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-50;
+    @apply bg-[#F5F7FA] text-[#2E3A59] dark:bg-[#1A1F2B] dark:text-white font-sans;
   }
 
   a {
-    @apply text-blue-500 dark:text-blue-400;
+    @apply text-[#00B8D9] hover:underline dark:text-[#00B8D9];
   }
 }
 
 @layer components {
   .card {
-    @apply p-4 bg-white border border-gray-200 dark:bg-gray-700 dark:border-gray-600 shadow rounded-lg p-4 mb-2;
+    @apply p-4 bg-white border border-gray-200 dark:bg-[#2E3A59] dark:border-gray-600 shadow rounded-lg mb-2;
   }
 
   .pill {
-    @apply px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full;
+    @apply px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#00B8D9] text-white;
   }
 
   .histogram {
     @apply h-6 w-full mx-auto;
   }
+
   .hitbox {
     align-items: flex-end;
     box-sizing: border-box;
@@ -32,6 +33,7 @@
     padding: 1px;
     border-radius: 3.75px;
   }
+
   .bar {
     @apply bg-gray-300 dark:bg-gray-600;
     padding-bottom: 1px;
@@ -57,12 +59,14 @@
   }
 
   .tooltip .content {
-    @apply invisible absolute z-50 inline-block;
-    @apply rounded-lg py-1 px-2 bg-gray-100 dark:bg-gray-800 shadow;
-    @apply opacity-0 transition-all duration-200 scale-50;
+    @apply invisible absolute z-50 inline-block rounded-lg py-1 px-2 bg-white dark:bg-[#2E3A59] shadow text-sm text-[#2E3A59] dark:text-white opacity-0 transition-all duration-200 scale-50;
   }
 
   .tooltip:hover .content {
     @apply visible opacity-100 scale-100;
+  }
+
+  .btn-primary {
+    @apply bg-[#00B8D9] hover:bg-[#0099B0] text-white font-semibold py-2 px-4 rounded-lg shadow;
   }
 }
