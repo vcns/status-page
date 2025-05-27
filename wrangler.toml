@@ -1,15 +1,10 @@
 name = "cf-workers-status-page"
 workers_dev = true
-compatibility_date = "2024-05-27"
+compatibility_date = "2025-05-27"
 
 [triggers]
 crons = ["*/5 * * * *"]
 
 [site]
 bucket = "./out"
-
-# uncomment and adjust following if you are not using GitHub Actions
-#[env.production]
-#kv-namespaces = [{binding="KV_STATUS_PAGE", id="xxxx", preview_id=""}]
-#zone_id="xxx"
-#route="xxx"
+main = "./index.js"
