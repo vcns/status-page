@@ -22,21 +22,19 @@ jobs:
         env:
           NODE_ENV: vcns-tech
       - name: Publish
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          preCommands: |
-            npx wrangler kv:namespace create KV_STATUS_PAGE || true
-            npx wrangler kv:namespace list > kv_output.json 2> error.log
-            export KV_NAMESPACE_ID=$(node -pe "JSON.parse(require('fs').readFileSync('kv_output.json')).find(kv => kv.title.includes('KV_STATUS_PAGE')).id")
-            echo "[env.vcns-tech]" >> wrangler.toml
-            echo "kv_namespaces = [{binding=\"KV_STATUS_PAGE\", id=\"${KV_NAMESPACE_ID}\"}]" >> wrangler.toml
-            # No Telegram or Discord integration
-          postCommands: |
-            yarn kv-gc
-          # No Telegram or Discord secrets
-          environment: production
+        uses: cloudflare/wrangler-action@v4.33.1
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           # No Telegram or Discord environment variables
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          environment: production
+          preCommands: |
+            npx wrangler kv:namespace create KV_STATUS_PAGE || true
+            npx wrangler kv:namespace list > kv_output.json 2> error.log
+            export KV_NAMESPACE_ID=$(node -pe "JSON.parse(require('fs').readFileSync('kv_output.json')).find(kv => kv.title.includes('KV_STATUS_PAGE')).id")
+            sed -i "s|__CLOUDFLARE_ACCOUNT_ID__|${CLOUDFLARE_ACCOUNT_ID}|g" wrangler.toml
+            echo "kv_namespaces = [{binding=\"KV_STATUS_PAGE\", id=\"${KV_NAMESPACE_ID}\"}]" >> wrangler.toml
+          postCommands: |
+            yarn kv-gc

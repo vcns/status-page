@@ -1,4 +1,5 @@
 name = "status"
+account_id = "04d64d6689a03c8e8e7e955b5e4cfe12"
 workers_dev = true
 compatibility_date = "2025-05-27"
 
