@@ -33,8 +33,8 @@ jobs:
           preCommands: |
             npx wrangler kv:namespace create KV_STATUS_PAGE || true
             npx wrangler kv:namespace list > kv_output.json 2> error.log
-            export KV_NAMESPACE_ID=$(node -pe "JSON.parse(require('fs').readFileSync('kv_output.json')).find(kv => kv.title.includes('KV_STATUS_PAGE')).id")
+            export KV_NAMESPACE_ID=$(node -pe "JSON.parse(require('fs').readFileSync('kv_output.json')).find(kv => kv.title.includes('CLOUDFLARE_KV_STATUS_PAGE')).id")
             sed -i "s|__CLOUDFLARE_ACCOUNT_ID__|${CLOUDFLARE_ACCOUNT_ID}|g" wrangler.toml
-            echo "kv_namespaces = [{binding=\"KV_STATUS_PAGE\", id=\"${KV_NAMESPACE_ID}\"}]" >> wrangler.toml
+            echo "kv_namespaces = [{binding=\"CLOUDFLARE_KV_STATUS_PAGE\", id=\"${CLOUDFLARE_KV_NAMESPACE_ID}\"}]" >> wrangler.toml
           postCommands: |
             yarn kv-gc
