@@ -2,15 +2,15 @@ const yaml = require('yaml-loader')
 const fetch = require('node-fetch')
 const fs = require('fs')
 
-const accountId = process.env.CF_ACCOUNT_ID
+const accountId = process.env.CLOUDFLARE_ACCOUNT_ID
 const namespaceId = process.env.KV_NAMESPACE_ID
-const apiToken = process.env.CF_API_TOKEN
+const apiToken = process.env.CLOUDFLARE_API_TOKEN
 
 const kvMonitorsKey = 'monitors_data_v1_1'
 
 if (!accountId || !namespaceId || !apiToken) {
   console.error(
-    'Missing required environment variables: CF_ACCOUNT_ID, KV_NAMESPACE_ID, CF_API_TOKEN',
+    'Missing required environment variables: CLOUDFLARE_ACCOUNT_ID, KV_NAMESPACE_ID, CLOUDFLARE_API_TOKEN',
   )
   process.exit(0)
 }
